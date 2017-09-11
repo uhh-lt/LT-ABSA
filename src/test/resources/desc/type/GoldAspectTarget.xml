@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ /*******************************************************************************
-  ~ * Copyright 2016
-  ~ * Copyright (c) 2016 Technische Universität Darmstadt
+  ~ * Copyright 2017
+  ~ * Copyright (c) 2017 Universität Hamburg
   ~ *
   ~ * Licensed under the Apache License, Version 2.0 (the "License");
   ~ * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
     <vendor/>
     <types>
         <typeDescription>
-            <name>tudarmstadt.lt.ABSentiment.type.uima.GoldAspectTarget</name>
+            <name>uhh_lt.ABSA.ABSentiment.type.uima.GoldAspectTarget</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>

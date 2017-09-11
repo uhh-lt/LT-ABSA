@@ -211,7 +211,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>tudarmstadt.lt.ABSentiment.ApplicationController</mainClass>
+                            <mainClass>uhh_lt.ABSA.ABSentiment.ApplicationController</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

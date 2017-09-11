@@ -20,16 +20,16 @@ JavaDoc documentation is available on the [documentation page](http://tudarmstad
 * add the AB-Sentiment dependency
 ```
 	<dependency>
-	    <groupId>com.github.tudarmstadt-lt</groupId>
-	    <artifactId>AB-Sentiment</artifactId>
+	    <groupId>com.github.uhh-lt</groupId>
+	    <artifactId>LT-ABSAt</artifactId>
 	    <version>-SNAPSHOT</version>
 	</dependency>
 ```
 * copy models into your project home
 * create a Java class for analysis:
 ```
-import tudarmstadt.lt.ABSentiment.type.Result;
-import tudarmstadt.lt.ABSentiment.AbSentiment;
+import uhh_lt.ABSA.ABSentiment.type.Result;
+import uhh_lt.ABSA.ABSentiment.AbSentiment;
 
 public class MyClass {
 
