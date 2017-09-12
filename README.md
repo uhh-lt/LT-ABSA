@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/uhh-lt/LT-ABSA.svg)](https://travis-ci.org/uhh-lt/LT-ABSA) [![Release](https://jitpack.io/v/tudarmstadt-lt/AB-Sentiment.svg)](https://jitpack.io/#tudarmstadt-lt/AB-Sentiment)
+[![Build Status](https://travis-ci.org/uhh-lt/LT-ABSA.svg)](https://travis-ci.org/uhh-lt/LT-ABSA)
+[![Release](https://jitpack.io/v/uhh-lt/LT-ABSA.svg)](https://jitpack.io/#uhh-lt/LT-ABSA)
 # Aspect-Based Sentiment Analysis
 
 ##  Overview
