@@ -25,6 +25,7 @@ import uhh_lt.ABSA.ABSentiment.classifier.LinearClassifier;
 import uhh_lt.ABSA.ABSentiment.classifier.aspectclass.LinearAspectClassifier;
 import uhh_lt.ABSA.ABSentiment.classifier.relevance.LinearRelevanceClassifier;
 import uhh_lt.ABSA.ABSentiment.classifier.sentiment.LinearSentimentClassifer;
+import uhh_lt.ABSA.ABSentiment.training.util.ProblemBuilder;
 import uhh_lt.ABSA.ABSentiment.type.AspectExpression;
 import uhh_lt.ABSA.ABSentiment.type.Result;
 import uhh_lt.ABSA.ABSentiment.type.uima.AspectTarget;
@@ -36,7 +37,7 @@ import static org.apache.uima.fit.util.JCasUtil.select;
  * Abstraction class for the Aspect-based Sentiment Analysis.
  * Processes text input.
  */
-public class AbSentiment {
+public class AbSentiment extends ProblemBuilder {
 
     private LinearClassifier relevanceClassifier;
     private LinearClassifier aspectClassifier;
@@ -50,7 +51,11 @@ public class AbSentiment {
      * Constructor that utilizes the classifiers and the NLP pipeline.
      */
     public AbSentiment(String configurationFile) {
-        relevanceClassifier = new LinearRelevanceClassifier(configurationFile);
+        initialise(configurationFile);
+        if (relevanceModel != null) {
+            relevanceClassifier = new LinearRelevanceClassifier(configurationFile);
+
+        }
         aspectClassifier = new LinearAspectClassifier(configurationFile);
         coarseAspectClassifier = new LinearAspectClassifier(configurationFile);
         sentimentClassifier = new LinearSentimentClassifer(configurationFile);
@@ -73,8 +78,10 @@ public class AbSentiment {
         JCas aspectCas = aspectTargetClassifier.processCas(cas);
         extractAspectExpressions(aspectCas, res);
 
-        res.setRelevance(relevanceClassifier.getLabel(cas));
-        res.setRelevanceScore(relevanceClassifier.getScore());
+        if (relevanceClassifier != null) {
+            res.setRelevance(relevanceClassifier.getLabel(cas));
+            res.setRelevanceScore(relevanceClassifier.getScore());
+        }
 
         res.setAspect(aspectClassifier.getLabel(cas));
         res.setAspectScore(aspectClassifier.getScore());

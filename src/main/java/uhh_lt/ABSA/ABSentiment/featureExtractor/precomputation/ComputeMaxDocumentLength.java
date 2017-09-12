@@ -21,6 +21,7 @@ package uhh_lt.ABSA.ABSentiment.featureExtractor.precomputation;
 
 import uhh_lt.ABSA.ABSentiment.reader.InputReader;
 import uhh_lt.ABSA.ABSentiment.reader.TsvReader;
+import uhh_lt.ABSA.ABSentiment.reader.XMLReader;
 import uhh_lt.ABSA.ABSentiment.type.Document;
 
 /**
@@ -35,7 +36,12 @@ public class ComputeMaxDocumentLength {
      */
     public static void computeMaxDocumentLength(String inputFile, String outputFile) {
         MaxDocumentLength ml = new MaxDocumentLength();
-        InputReader fr = new TsvReader(inputFile);
+        InputReader fr;
+        if (inputFile.endsWith("xml")) {
+            fr = new XMLReader(inputFile);
+        } else {
+            fr = new TsvReader(inputFile);
+        }
 
         System.out.println("Computing corpus length...\n");
         int i = 0;

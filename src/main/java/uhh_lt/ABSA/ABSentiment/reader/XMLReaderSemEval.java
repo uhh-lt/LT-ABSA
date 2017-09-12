@@ -23,6 +23,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import uhh_lt.ABSA.ABSentiment.featureExtractor.util.Pair;
 import uhh_lt.ABSA.ABSentiment.type.Document;
 import uhh_lt.ABSA.ABSentiment.type.Opinion;
 import uhh_lt.ABSA.ABSentiment.type.Sentence;
@@ -55,6 +56,8 @@ public class XMLReaderSemEval implements InputReader {
     private static final String opinionAttrCategory = "category";
     private static final String opinionAttrPolarity = "polarity";
     private static final String opinionAttrTarget = "target";
+    private static final String opinionAttrTargetBegin = "from";
+    private static final String opinionAttrTargetEnd = "to";
 
     /**
      * Constructor, creates a {@link org.w3c.dom.Document} from an input file.
@@ -137,6 +140,7 @@ public class XMLReaderSemEval implements InputReader {
      */
     private ArrayList<Opinion> getOpinions(Node sNode) {
         String category,polarity,target;
+        int to, from;
         ArrayList<Opinion> opinions = new ArrayList<>();
         NodeList oList = ((Element) sNode).getElementsByTagName(opinionTag);
         for (int oI = 0; oI < oList.getLength(); oI++) {
@@ -145,7 +149,11 @@ public class XMLReaderSemEval implements InputReader {
             category = ((Element) oNode).getAttribute(opinionAttrCategory);
             polarity = ((Element) oNode).getAttribute(opinionAttrPolarity);
             target = ((Element) oNode).getAttribute(opinionAttrTarget);
-            opinions.add(new Opinion(category, polarity, target));
+            Opinion o = new Opinion(category, polarity, target);
+            from = Integer.parseInt(((Element) oNode).getAttribute(opinionAttrTargetBegin));
+            to = Integer.parseInt(((Element) oNode).getAttribute(opinionAttrTargetEnd));
+            o.addTarget(new Pair<>(from,to));
+            opinions.add(o);
         }
         return  opinions;
     }

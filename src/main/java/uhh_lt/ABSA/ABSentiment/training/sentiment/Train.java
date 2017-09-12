@@ -42,6 +42,9 @@ public class Train extends ProblemBuilder {
             configurationfile = args[0];
         }
         initialise(configurationfile);
+        if (sentimentModel == null) {
+            return;
+        }
 
         Vector<FeatureExtractor> features = loadFeatureExtractors(type);
         Problem problem = buildProblem(trainFile, features, type, true);

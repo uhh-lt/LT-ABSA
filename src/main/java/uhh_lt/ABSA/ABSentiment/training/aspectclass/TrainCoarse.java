@@ -43,6 +43,9 @@ public class TrainCoarse extends ProblemBuilder {
             configurationfile = args[0];
         }
         initialise(configurationfile);
+        if (aspectCoarseModel == null) {
+            return;
+        }
 
         Vector<FeatureExtractor> features = loadFeatureExtractors(type);
         useCoarseLabels = true;

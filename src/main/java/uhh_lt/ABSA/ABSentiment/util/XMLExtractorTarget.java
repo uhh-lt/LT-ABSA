@@ -70,7 +70,6 @@ public class XMLExtractorTarget {
 
         for (Document d: in) {
             for (Sentence s : d.getSentences()) {
-
                 preprocessor.processText(s.getText());
                 JCas cas = preprocessor.getCas();
                 for (Pair<Integer, Integer> o : s.getTargetOffsets()) {
