@@ -214,6 +214,7 @@ public class Classify extends ProblemBuilder{
                         opinion.setAttribute("polarity", resSent.getSentiment());
                         opinion.setAttribute("category", resSent.getAspect());
                         opinionsSent.appendChild(opinion);
+                        //opinions.appendChild(opinion);
                     } else {
                         for (AspectExpression aspectExpression : resSent.getAspectExpressions()) {
                             Element opinion = results.createElement("Opinion");
@@ -223,6 +224,7 @@ public class Classify extends ProblemBuilder{
                             opinion.setAttribute("polarity", resSent.getSentiment());
                             opinion.setAttribute("category", resSent.getAspect());
                             opinionsSent.appendChild(opinion);
+                            //opinions.appendChild(opinion);
                         }
                     }
                 }

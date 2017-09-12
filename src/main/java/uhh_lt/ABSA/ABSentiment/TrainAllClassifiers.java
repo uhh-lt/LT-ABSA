@@ -19,8 +19,6 @@
 
 package uhh_lt.ABSA.ABSentiment;
 
-import uhh_lt.ABSA.ABSentiment.training.aspectclass.TrainCoarse;
-import uhh_lt.ABSA.ABSentiment.training.aspecttarget.Train;
 
 /**
  * General training class. Calls all model trainers to train on the file specified in a @link{Configuration}.
@@ -31,8 +29,8 @@ public class TrainAllClassifiers {
 
         uhh_lt.ABSA.ABSentiment.training.relevance.Train.main(args);
         uhh_lt.ABSA.ABSentiment.training.aspectclass.Train.main(args);
-        TrainCoarse.main(args);
+        uhh_lt.ABSA.ABSentiment.training.aspectclass.TrainCoarse.main(args);
         uhh_lt.ABSA.ABSentiment.training.sentiment.Train.main(args);
-        Train.main(args);
+        uhh_lt.ABSA.ABSentiment.training.aspecttarget.Train.main(args);
     }
 }

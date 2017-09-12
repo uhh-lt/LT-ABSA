@@ -150,9 +150,13 @@ public class XMLReaderSemEval implements InputReader {
             polarity = ((Element) oNode).getAttribute(opinionAttrPolarity);
             target = ((Element) oNode).getAttribute(opinionAttrTarget);
             Opinion o = new Opinion(category, polarity, target);
-            from = Integer.parseInt(((Element) oNode).getAttribute(opinionAttrTargetBegin));
-            to = Integer.parseInt(((Element) oNode).getAttribute(opinionAttrTargetEnd));
-            o.addTarget(new Pair<>(from,to));
+
+            String fromString = ((Element) oNode).getAttribute(opinionAttrTargetBegin);
+            if (fromString != null && !fromString.isEmpty()) {
+                from = Integer.parseInt(fromString);
+                to = Integer.parseInt(((Element) oNode).getAttribute(opinionAttrTargetEnd));
+                o.addTarget(new Pair<>(from,to));
+            }
             opinions.add(o);
         }
         return  opinions;

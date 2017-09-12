@@ -22,6 +22,7 @@ package uhh_lt.ABSA.ABSentiment.util;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
 import uhh_lt.ABSA.ABSentiment.featureExtractor.util.Pair;
 import uhh_lt.ABSA.ABSentiment.reader.InputReader;
 import uhh_lt.ABSA.ABSentiment.reader.XMLReader;
@@ -80,7 +81,7 @@ public class XMLExtractorTarget {
                 for (Token t : JCasUtil.selectCovered(cas, Token.class, 0, cas.getDocumentText().length())) {
                     try {
                         out.append(t.getCoveredText() + "\t");
-                        if (JCasUtil.selectCovered(GoldAspectTarget.class, t).size() > 0) {
+                        if (JCasUtil.selectCovering(GoldAspectTarget.class, t).size() > 0) {
                             if (inTarget) {
                                 out.append("I\n");
                             } else {
