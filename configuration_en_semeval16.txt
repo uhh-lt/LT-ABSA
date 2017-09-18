@@ -1,0 +1,43 @@
+## configuration for sentiment task on SemEval 2016 release/data
+
+# training and test files
+format		semeval16					# either germeval or semeval16
+trainFile	release/data/SemEval2016-5/en/Eng_ABSA16_Restaurants_Train_SB1_v2.xml
+testFile	release/data/SemEval2016-5/en/EN_REST_SB2_TEST.xml
+
+language	en
+
+# the domain corpus is required for feature induction
+corpus					release/data/SemEval2016-5/en/corpus/corpus_en.tsv.gz
+
+
+# models
+#relevanceModel		release/data/SemEval2016-5/en/models-rest_sb1/relevance_model
+#aspectModel			release/data/SemEval2016-5/en/models-rest_sb1/aspect_model
+#aspectCoarseModel	release/data/SemEval2016-5/en/models-rest_sb1/aspect_coarse_model
+#sentimentModel		release/data/SemEval2016-5/en/models-rest_sb1/sentiment_model
+crfModelFolder		release/data/SemEval2016-5/en/models-rest_sb1/
+
+
+# features
+
+
+positiveGazeteerFile	release/data/SemEval2016-5/en/dictionaries/positive
+negativeGazeteerFile	release/data/SemEval2016-5/en/dictionaries/negative
+polarityLexiconFile		release/data/SemEval2016-5/en/features/polarityLexicon.tsv.gz
+w2vFile					release/data/SemEval2016-5/en/wordEmbedding/englishWord2Vec-300.bin.gz
+
+/weightedIdfFile			release/data/en/features/idfmap.tsv.gz
+/weightedW2vFile		release/data/en/wordEmbedding/englishWord2Vec-300.bin
+
+# induced features
+idfFile					release/data/SemEval2016-5/en/features/idfmap.tsv.gz				# IDF file, min freq = 100
+maxLengthFile			release/data/SemEval2016-5/en/features/max_length					# limit: 500 words
+relIdfTerms				release/data/SemEval2016-5/en/features/relevance_idf_terms.tsv
+sentIdfTerms			release/data/SemEval2016-5/en/features/sentiment_idf_terms.tsv
+aspectIdfTerms			release/data/SemEval2016-5/en/features/aspect_idf_terms.tsv
+aspectCoarseIdfTerms	release/data/SemEval2016-5/en/features/aspect_coarse_idf_terms.tsv
+
+
+/DTConfigurationFile		conf_web_wikipedia_trigram.xml
+/missingWordsFile		release/data/en/expansion/missingWords.txt

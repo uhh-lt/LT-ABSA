@@ -53,10 +53,14 @@ public class LinearClassifier extends ProblemBuilder implements Classifier {
         Vector<Feature[]> instanceFeatures = applyFeatures(cas, features);
         Feature[] instance = combineInstanceFeatures(instanceFeatures);
         probEstimates = new double[model.getNrClass()];
-        Double prediction = Linear.predictProbability(model, instance, probEstimates);
-
+        Double prediction;
+        if (model.getSolverType().isLogisticRegressionSolver()) {
+            prediction = Linear.predictProbability(model, instance, probEstimates);
+            score = probEstimates[prediction.intValue()];
+        } else {
+            prediction = Linear.predict(model, instance);
+        }
         label = labelMappings.get(prediction);
-        score = probEstimates[prediction.intValue()];
         return label;
     }
 

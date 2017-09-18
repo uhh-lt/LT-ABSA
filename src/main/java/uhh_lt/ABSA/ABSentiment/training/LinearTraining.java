@@ -21,6 +21,7 @@ package uhh_lt.ABSA.ABSentiment.training;
 
 
 import de.bwaldvogel.liblinear.*;
+import org.deeplearning4j.optimize.Solver;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,7 +35,7 @@ import java.util.zip.GZIPOutputStream;
 public class LinearTraining {
 
     public Model trainModel(Problem problem){
-        SolverType solver = SolverType.L2R_LR;
+        SolverType solver = SolverType.L2R_LR_DUAL;
         double C = 1.0;
         double eps = 0.01;
         Parameter parameter = new Parameter(solver, C, eps);
