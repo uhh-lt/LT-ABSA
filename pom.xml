@@ -5,7 +5,7 @@
 
     <groupId>tudarmstadt-lt.ABSentiment</groupId>
     <artifactId>ABSA</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
 
     <name>ABSA</name>
     <description>Aspect-based Sentiment Analysis</description>
