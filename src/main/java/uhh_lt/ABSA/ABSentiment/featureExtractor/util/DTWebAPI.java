@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class DTWebAPI extends ProblemBuilder{
 
-    protected static int numberOfSimilarWords = 6;
+    protected static final int numberOfSimilarWords = 6;
     protected static IThesaurusDatastructure<String, String> dt;
     protected static List<Order2> similarWords;
 

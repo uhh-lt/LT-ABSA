@@ -27,6 +27,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.zip.GZIPInputStream;
@@ -163,7 +164,7 @@ public class GloVeSpace extends GenericWordSpace<FloatMatrix> {
                 Float d = Float.parseFloat(line[j]);
                 vector[j - 1] = d;
             } catch (NumberFormatException e) {
-                System.err.println("ERROR Parsing: " + line + " " + e.getMessage());
+                System.err.println("ERROR Parsing: " + Arrays.toString(line) + " " + e.getMessage());
                 vector[j - 1] = 0.0F;
             }
         }

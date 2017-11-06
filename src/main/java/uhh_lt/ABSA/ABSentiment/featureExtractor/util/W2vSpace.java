@@ -28,6 +28,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.lang.StringUtils;
@@ -184,7 +185,7 @@ public class W2vSpace extends GenericWordSpace<FloatMatrix> {
                 float d = Float.parseFloat(line[j]);
                 vector[j - 1] = d;
             } catch (NumberFormatException e) {
-                System.err.println("ERROR Parsing: " + line + " " + e.getMessage());
+                System.err.println("ERROR Parsing: " + Arrays.toString(line )+ " " + e.getMessage());
                 vector[j - 1] = 0.0f;
             }
         }

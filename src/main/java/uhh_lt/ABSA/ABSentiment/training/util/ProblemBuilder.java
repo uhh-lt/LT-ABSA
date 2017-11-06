@@ -56,7 +56,7 @@ import java.util.Vector;
 public class ProblemBuilder {
 
     protected static InputReader fr;
-    protected static Preprocessor preprocessor = new Preprocessor(true);
+    protected static final Preprocessor preprocessor = new Preprocessor(false);
 
     protected static String configurationfile;
 
@@ -208,7 +208,7 @@ public class ProblemBuilder {
             }else if(entry.getKey().equals("crfModelFolder")){
                 crfModelFolder = entry.getValue();
                 if (!crfModelFolder.endsWith("/")){
-                    crfModelFolder.concat("/");
+                    crfModelFolder = crfModelFolder.concat("/");
                 }
             } else if(entry.getKey().equals("missingWordsFile")) {
                 missingWordsFile = entry.getValue();

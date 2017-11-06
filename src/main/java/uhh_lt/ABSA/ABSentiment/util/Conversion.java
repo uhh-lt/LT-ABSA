@@ -119,11 +119,9 @@ public class Conversion {
         try {
             while ((line = reader.readLine()) != null) {
                 if (line.isEmpty()) {
-                    if (document != null || document.isEmpty()) {
                         relLabel = extractRelevance(relevance, "1");
                         if (relLabel.compareTo("1") == 0) {
                             targetOut.append("\n");
-                        }
 
                         inside = false;
                         relevance.clear();
