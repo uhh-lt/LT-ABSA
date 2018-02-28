@@ -54,12 +54,19 @@ public class AbSentiment extends ProblemBuilder {
         initialise(configurationFile);
         if (relevanceModel != null) {
             relevanceClassifier = new LinearRelevanceClassifier(configurationFile);
-
         }
-        aspectClassifier = new LinearAspectClassifier(configurationFile);
-        coarseAspectClassifier = new LinearAspectClassifier(configurationFile);
-        sentimentClassifier = new LinearSentimentClassifer(configurationFile);
-        aspectTargetClassifier = new CrfClassifier(configurationFile);
+        if (aspectModel != null) {
+            aspectClassifier = new LinearAspectClassifier(configurationFile);
+        }
+        if (aspectCoarseModel != null) {
+            coarseAspectClassifier = new LinearAspectClassifier(configurationFile);
+        }
+        if (sentimentModel != null) {
+            sentimentClassifier = new LinearSentimentClassifer(configurationFile);
+        }
+        if (aspectModel != null) {
+            aspectTargetClassifier = new CrfClassifier(configurationFile);
+        }
         nlpPipeline = new Preprocessor(false);
     }
 
@@ -83,15 +90,19 @@ public class AbSentiment extends ProblemBuilder {
             res.setRelevanceScore(relevanceClassifier.getScore());
         }
 
-        res.setAspect(aspectClassifier.getLabel(cas));
-        res.setAspectScore(aspectClassifier.getScore());
+        if (aspectClassifier != null) {
+            res.setAspect(aspectClassifier.getLabel(cas));
+            res.setAspectScore(aspectClassifier.getScore());
+        }
 
-        res.setAspectCoarse(coarseAspectClassifier.getLabel(cas));
-        res.setAspectCoarseScore(coarseAspectClassifier.getScore());
-
-        res.setSentiment(sentimentClassifier.getLabel(cas));
-        res.setSentimentScore(sentimentClassifier.getScore());
-
+        if (coarseAspectClassifier != null) {
+            res.setAspectCoarse(coarseAspectClassifier.getLabel(cas));
+            res.setAspectCoarseScore(coarseAspectClassifier.getScore());
+        }
+        if (sentimentClassifier != null) {
+            res.setSentiment(sentimentClassifier.getLabel(cas));
+            res.setSentimentScore(sentimentClassifier.getScore());
+        }
         return res;
     }
 
