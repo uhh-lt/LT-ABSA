@@ -22,7 +22,7 @@ JavaDoc documentation is available on the [documentation page](http://tudarmstad
 ```
 	<dependency>
 	    <groupId>com.github.uhh-lt</groupId>
-	    <artifactId>LT-ABSAt</artifactId>
+	    <artifactId>LT-ABSA</artifactId>
 	    <version>-SNAPSHOT</version>
 	</dependency>
 ```
