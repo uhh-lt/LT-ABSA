@@ -21,11 +21,9 @@ package uhh_lt.ABSA.ABSentiment.training.sentiment;
 
 import de.bwaldvogel.liblinear.Model;
 import de.bwaldvogel.liblinear.Problem;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import uhh_lt.ABSA.ABSentiment.featureExtractor.FeatureExtractor;
-import uhh_lt.ABSA.ABSentiment.training.util.ProblemBuilder;
-import uhh_lt.ABSA.ABSentiment.training.DNNTraining;
 import uhh_lt.ABSA.ABSentiment.training.LinearTraining;
+import uhh_lt.ABSA.ABSentiment.training.util.ProblemBuilder;
 
 import java.util.Vector;
 
@@ -53,11 +51,6 @@ public class Train extends ProblemBuilder {
             LinearTraining linearTraining = new LinearTraining();
             Model model = linearTraining.trainModel(problem);
             linearTraining.saveModel(model, sentimentModel);
-            saveLabelMappings(labelMappingsFileSentiment);
-        }else if(modelType.equals("dnn")){
-            DNNTraining dnnTraining = new DNNTraining();
-            MultiLayerNetwork model = dnnTraining.trainModel(problem);
-            dnnTraining.saveModel(model, sentimentModel, true);
             saveLabelMappings(labelMappingsFileSentiment);
         }
     }

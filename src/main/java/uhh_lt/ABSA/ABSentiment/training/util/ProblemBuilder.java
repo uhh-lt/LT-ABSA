@@ -25,28 +25,21 @@ import de.bwaldvogel.liblinear.Model;
 import de.bwaldvogel.liblinear.Problem;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.uima.jcas.JCas;
-import org.datavec.api.records.reader.RecordReader;
-import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
-import org.deeplearning4j.eval.Evaluation;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.dataset.DataSet;
-import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.factory.Nd4j;
+import uhh_lt.ABSA.ABSentiment.featureExtractor.*;
 import uhh_lt.ABSA.ABSentiment.featureExtractor.util.ConfusionMatrix;
 import uhh_lt.ABSA.ABSentiment.reader.InputReader;
 import uhh_lt.ABSA.ABSentiment.reader.TsvReader;
+import uhh_lt.ABSA.ABSentiment.reader.XMLReader;
 import uhh_lt.ABSA.ABSentiment.reader.XMLReaderSemEval;
 import uhh_lt.ABSA.ABSentiment.type.Document;
 import uhh_lt.ABSA.ABSentiment.type.Sentence;
 import uhh_lt.ABSA.ABSentiment.uimahelper.Preprocessor;
-import uhh_lt.ABSA.ABSentiment.featureExtractor.*;
-import uhh_lt.ABSA.ABSentiment.reader.XMLReader;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Vector;
 
 /**
@@ -662,58 +655,7 @@ public class ProblemBuilder {
     }
 
 
-    protected static INDArray classifyTestSet(MultiLayerNetwork model, Problem problem, boolean printResult){
-        int batchSize = 200;
-        int labelIndex = 0;
-        int numClasses = labelMappings.size();
 
-        List<List<Double>> inputFeature = new ArrayList<>();
-        for(int i=0;i<problem.l;i++){
-            Feature[] array = problem.x[i];
-            Double y = problem.y[i];
-            ArrayList<Double> newArray = new ArrayList<>();
-            newArray.add(y);
-            int k = 0;
-            for(int j=0;j<problem.n;j++){
-                if(k<array.length){
-                    if(array[k].getIndex()==j){
-                        newArray.add(array[k++].getValue());
-                    }else{
-                        newArray.add(0.0);
-                    }
-                }
-            }
-            inputFeature.add(newArray);
-        }
-
-        INDArray classificationProbability = Nd4j.zeros(inputFeature.size(), numClasses);
-
-        RecordReader recordReader = new ListDoubleRecordReader();
-        try {
-            recordReader.initialize(new ListDoubleSplit(inputFeature));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        DataSetIterator iterator = new RecordReaderDataSetIterator(recordReader, batchSize, labelIndex, numClasses);
-
-        Evaluation eval = new Evaluation(numClasses);
-        DataSet ds;
-        int j = -1;
-        while(iterator.hasNext()){
-            ds = iterator.next();
-            INDArray output = model.output(ds.getFeatureMatrix());
-            for(int i=0;i<output.size(0);i++){
-                classificationProbability.putRow(++j, output.getRow(i));
-            }
-            eval.eval(ds.getLabels(),output);
-        }
-        if(printResult){
-            System.out.println(eval.stats());
-        }
-        return classificationProbability;
-    }
 
     protected static void printConfusionMatrix(){
         confusionMatrix.printConfusionMatrix();

@@ -78,11 +78,13 @@ public class Conversion {
     private static Set<String> subAspect = new HashSet<>();
     private static Set<String> aspect = new HashSet<>();
     private static List<Target> targets = new ArrayList<>();
+    private static List<Target> sentimentWords = new ArrayList<>();
 
     static String document = "";
 
     private static Map<String, String> documentMap = new HashMap<>();
     private static Map<String, String> idMap = new HashMap<>();
+    private static Map<Integer, Integer> relations = new HashMap<>();
 
     public static void mainTarget(String[] args) {
 
@@ -697,6 +699,7 @@ public class Conversion {
         // relation to polarity words
         if (previous.getPolarity() != null) {
             t.setPolarity(previous.getPolarity());
+            addSentimentWord(previous, t);
         }
 
         previous.setOrigPosition(t.getPosition());
@@ -710,6 +713,12 @@ public class Conversion {
 //        }
 
         return t;
+    }
+
+    private static void addSentimentWord(Target previous, Target t) {
+        sentimentWords.add(previous);
+
+        relations.put(t.begin, previous.begin);
     }
 
 
@@ -871,6 +880,23 @@ public class Conversion {
                             polarityCount.put(polarity, 1);
                         }
                     }
+                    // polarity target
+                    for (Target pol : targets) {
+                        System.out.println(pol.begin);
+                        System.out.println(t.begin);
+                        try {
+
+                            if (relations.containsKey(t.begin) && pol.begin == relations.get(t.begin)) {
+
+                                opinion.setAttribute("polarity-target", pol.getTarget());
+                                opinion.setAttribute("pol-from", t.begin + "");
+                                opinion.setAttribute("pol-to", t.end + "");
+
+                            }
+                        } catch (Exception e) {
+
+                        }
+                        }
                 }
                 //opinion.setAttribute("orig-position", t.getOrigPosition()+"");
                 //opinion.setAttribute("active", t.isActive()+"");

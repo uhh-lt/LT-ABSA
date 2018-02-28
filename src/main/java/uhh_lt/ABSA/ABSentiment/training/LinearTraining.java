@@ -21,7 +21,6 @@ package uhh_lt.ABSA.ABSentiment.training;
 
 
 import de.bwaldvogel.liblinear.*;
-import org.deeplearning4j.optimize.Solver;
 
 import java.io.File;
 import java.io.FileOutputStream;

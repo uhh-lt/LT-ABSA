@@ -20,12 +20,9 @@
 package uhh_lt.ABSA.ABSentiment.training.aspectclass;
 
 import de.bwaldvogel.liblinear.Model;
-import de.bwaldvogel.liblinear.Problem;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import uhh_lt.ABSA.ABSentiment.featureExtractor.FeatureExtractor;
-import uhh_lt.ABSA.ABSentiment.training.util.ProblemBuilder;
-import uhh_lt.ABSA.ABSentiment.training.DNNTesting;
 import uhh_lt.ABSA.ABSentiment.training.LinearTesting;
+import uhh_lt.ABSA.ABSentiment.training.util.ProblemBuilder;
 
 import java.util.Vector;
 
@@ -56,11 +53,6 @@ public class Test extends ProblemBuilder {
             LinearTesting linearTesting = new LinearTesting();
             Model model = linearTesting.loadModel(aspectModel);
             classifyTestSet(testFile, model, features, predictionFile, type, true);
-        }else if(modelType.equals("dnn")){
-            DNNTesting dnnTesting = new DNNTesting();
-            Problem problem = buildProblem(testFile, features, type, false);
-            MultiLayerNetwork model = dnnTesting.loadModel(aspectModel);
-            classifyTestSet(model, problem, true);
         }
 
     }
