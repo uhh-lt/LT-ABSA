@@ -23,6 +23,7 @@ import org.apache.uima.jcas.JCas;
 import uhh_lt.ABSA.ABSentiment.classifier.CrfClassifier;
 import uhh_lt.ABSA.ABSentiment.classifier.LinearClassifier;
 import uhh_lt.ABSA.ABSentiment.classifier.aspectclass.LinearAspectClassifier;
+import uhh_lt.ABSA.ABSentiment.classifier.aspectclass.LinearCoarseAspectClassifier;
 import uhh_lt.ABSA.ABSentiment.classifier.relevance.LinearRelevanceClassifier;
 import uhh_lt.ABSA.ABSentiment.classifier.sentiment.LinearSentimentClassifer;
 import uhh_lt.ABSA.ABSentiment.training.util.ProblemBuilder;
@@ -59,12 +60,12 @@ public class AbSentiment extends ProblemBuilder {
             aspectClassifier = new LinearAspectClassifier(configurationFile);
         }
         if (aspectCoarseModel != null) {
-            coarseAspectClassifier = new LinearAspectClassifier(configurationFile);
+            coarseAspectClassifier = new LinearCoarseAspectClassifier(configurationFile);
         }
         if (sentimentModel != null) {
             sentimentClassifier = new LinearSentimentClassifer(configurationFile);
         }
-        if (aspectModel != null) {
+        if (modelFolder != null) {
             aspectTargetClassifier = new CrfClassifier(configurationFile);
         }
         nlpPipeline = new Preprocessor(false);

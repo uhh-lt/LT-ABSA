@@ -202,7 +202,7 @@ public class ProblemBuilder {
             }else if(entry.getKey().equals("sentimentModel")) {
                 sentimentModel = entry.getValue();
                 labelMappingsFileSentiment = entry.getValue()+"_label_mappings.tsv";
-            }else if(entry.getKey().equals("modelFolder")){
+            }else if(entry.getKey().equals("modelFolder") || entry.getKey().equals("crfModelFolder")){
                 modelFolder = entry.getValue();
                 if (!modelFolder.endsWith("/")){
                     modelFolder = modelFolder.concat("/");
