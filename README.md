@@ -27,6 +27,7 @@ JavaDoc documentation is available on the [documentation page](http://tudarmstad
 	</dependency>
 ```
 * copy models into your project home
+* adapt the configuration file with the correct paths
 * create a Java class for analysis:
 ```
 import uhh_lt.ABSA.ABSentiment.type.Result;
@@ -35,7 +36,7 @@ import uhh_lt.ABSA.ABSentiment.AbSentiment;
 public class MyClass {
 
     public static void main(String[] args) {
-        AbSentiment analyzer = new AbSentiment();
+        AbSentiment analyzer = new AbSentiment("congiguration.txt");
 
         Result result = analyzer.analyzeText("This is the input string");
 

@@ -46,7 +46,7 @@ public class CrfClassifier extends ProblemBuilder{
             initialise(configurationFile);
             classifier = createEngine(AspectAnnotator.class,
                     GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH,
-                    crfModelFolder + "model.jar");
+                    modelFolder + "model.jar");
 
         } catch (ResourceInitializationException e) {
             e.printStackTrace();

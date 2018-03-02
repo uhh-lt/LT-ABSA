@@ -43,13 +43,21 @@ public class PreComputeFeatures extends ProblemBuilder {
 
         initialise(configurationFile);
 
-        ComputeCorpusIdfScores.computeIdfScores(corpusFile, idfFile, 100);
+        ComputeCorpusIdfScores.computeIdfScores(corpusFile, idfFile, minTermFrequency);
         ComputeMaxDocumentLength.computeMaxDocumentLength(trainFile, maxLengthFile);
 
-        ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, relevanceIdfFile, false, "relevance");
-        ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, sentimentIdfFile, false, "sentiment");
-        ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectIdfFile, false, "aspect");
-        ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectCoarseIdfFile, true, "aspect");
+        if (relevanceIdfFile != null) {
+            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, relevanceIdfFile, false, "relevance");
+        }
+        if (sentimentIdfFile != null) {
+            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, sentimentIdfFile, false, "sentiment");
+        }
+        if (aspectCoarseIdfFile != null) {
+            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectCoarseIdfFile, true, "aspect");
+        }
+        if (aspectIdfFile != null) {
+            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectIdfFile, false, "aspect");
+        }
     }
 
 }

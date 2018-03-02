@@ -72,11 +72,13 @@ public class ProblemBuilder {
     protected static String featureStatisticsFile;
     protected static String idfGazeteerFile;
     protected static String idfFile;
+    protected static int minTermFrequency = 100;
+
     protected static String relevanceModel;
     protected static String aspectModel;
     protected static String aspectCoarseModel;
     protected static String sentimentModel;
-    protected static String crfModelFolder;
+    protected static String modelFolder;
 
     protected static String corpusFile;
     protected static String maxLengthFile;
@@ -135,7 +137,7 @@ public class ProblemBuilder {
         aspectModel = null;
         aspectCoarseModel = null;
         sentimentModel = null;
-        crfModelFolder = null;
+        modelFolder = null;
         missingWordsFile = null;
         DTExpansionFile = null;
         weightedW2vFile = null;
@@ -166,8 +168,10 @@ public class ProblemBuilder {
                 if (format.compareTo("semeval16") == 0) {
                     semeval16 = true;
                 }
-            }else if(entry.getKey().equals("idfFile")){
+            }else if(entry.getKey().equals("idfFile")) {
                 idfFile = entry.getValue();
+            } else if (entry.getKey().equals("minTermFrequency")) {
+                minTermFrequency = Integer.parseInt(entry.getValue());
             }else if(entry.getKey().equals("idfGazeteerFile")){
                 idfGazeteerFile = entry.getValue();
             }else if(entry.getKey().equals("positiveGazeteerFile")){
@@ -198,10 +202,10 @@ public class ProblemBuilder {
             }else if(entry.getKey().equals("sentimentModel")) {
                 sentimentModel = entry.getValue();
                 labelMappingsFileSentiment = entry.getValue()+"_label_mappings.tsv";
-            }else if(entry.getKey().equals("crfModelFolder")){
-                crfModelFolder = entry.getValue();
-                if (!crfModelFolder.endsWith("/")){
-                    crfModelFolder = crfModelFolder.concat("/");
+            }else if(entry.getKey().equals("modelFolder")){
+                modelFolder = entry.getValue();
+                if (!modelFolder.endsWith("/")){
+                    modelFolder = modelFolder.concat("/");
                 }
             } else if(entry.getKey().equals("missingWordsFile")) {
                 missingWordsFile = entry.getValue();

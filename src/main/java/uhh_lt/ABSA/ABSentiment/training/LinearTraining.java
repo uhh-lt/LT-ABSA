@@ -33,7 +33,7 @@ import java.util.zip.GZIPOutputStream;
  */
 public class LinearTraining {
 
-    public Model trainModel(Problem problem){
+    public Model trainModel(Problem problem) {
         SolverType solver = SolverType.L2R_LR_DUAL;
         double C = 1.0;
         double eps = 0.01;
@@ -55,7 +55,9 @@ public class LinearTraining {
     }
 
     public void saveModel(Model model, String modelFile) {
-       saveModel(model, modelFile, true);
+        File file = new File(modelFile);
+        file.getParentFile().mkdirs();
+        saveModel(model, modelFile, true);
     }
 
 }

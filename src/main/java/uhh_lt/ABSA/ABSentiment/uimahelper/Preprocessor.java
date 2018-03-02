@@ -60,7 +60,7 @@ public class Preprocessor extends ProblemBuilder {
             tokenizer = AnalysisEngineFactory.createEngine(TokenAnnotator.class);
             //tokenizer = AnalysisEngineFactory.createEngine(BreakIteratorSegmenter.class);
             postagger = AnalysisEngineFactory.createEngine(OpenNlpPosTagger.class,
-                            OpenNlpPosTagger.PARAM_MODEL_LOCATION, crfModelFolder +"opennlp-"+language+"-pos-maxent.bin");
+                            OpenNlpPosTagger.PARAM_MODEL_LOCATION, modelFolder +"opennlp-"+language+"-pos-maxent.bin");
         } catch (ResourceInitializationException e) {
             e.printStackTrace();
         }
