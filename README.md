@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/uhh-lt/LT-ABSA.svg)](https://travis-ci.org/uhh-lt/LT-ABSA)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/be3edf328f014b6c9e0c2f327d650ff0)](https://www.codacy.com/app/eugenso/LT-ABSA?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uhh-lt/LT-ABSA&amp;utm_campaign=Badge_Grade)
 [![Release](https://jitpack.io/v/uhh-lt/LT-ABSA.svg)](https://jitpack.io/#uhh-lt/LT-ABSA)
 # Aspect-Based Sentiment Analysis
 
