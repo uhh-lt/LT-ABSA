@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/uhh-lt/LT-ABSA.svg)](https://travis-ci.org/uhh-lt/LT-ABSA)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/be3edf328f014b6c9e0c2f327d650ff0)](https://www.codacy.com/app/eugenso/LT-ABSA?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uhh-lt/LT-ABSA&amp;utm_campaign=Badge_Grade)
 [![Release](https://jitpack.io/v/uhh-lt/LT-ABSA.svg)](https://jitpack.io/#uhh-lt/LT-ABSA)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fuhh-lt%2FLT-ABSA.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fuhh-lt%2FLT-ABSA?ref=badge_shield)
 # Aspect-Based Sentiment Analysis
 
 ##  Overview
@@ -53,6 +54,9 @@ public class MyClass {
 
 ## Licence
 This software is published under the Apache Software Licence 2.0
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fuhh-lt%2FLT-ABSA.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fuhh-lt%2FLT-ABSA?ref=badge_large)
 
 ## Third party license
 This software uses the jblas library. The copyright link is : https://github.com/mikiobraun/jblas/blob/e1de8249b28137fa94a79558ee90ff037fd7c47d/COPYING
