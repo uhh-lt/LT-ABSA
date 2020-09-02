@@ -4,6 +4,7 @@ jdk:
   - openjdk8
 script:
 - echo "skipping tests"
+- mvn install -DskipTests
 cache:
   directories:
     - $HOME/.m2
