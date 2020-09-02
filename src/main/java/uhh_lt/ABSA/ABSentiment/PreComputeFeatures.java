@@ -43,8 +43,8 @@ public class PreComputeFeatures extends ProblemBuilder {
 
         initialise(configurationFile);
 
-        ComputeCorpusIdfScores.computeIdfScores(corpusFile, idfFile, minTermFrequency);
-        ComputeMaxDocumentLength.computeMaxDocumentLength(trainFile, maxLengthFile);
+        //ComputeCorpusIdfScores.computeIdfScores(corpusFile, idfFile, minTermFrequency);
+        //ComputeMaxDocumentLength.computeMaxDocumentLength(trainFile, maxLengthFile);
 
         if (relevanceIdfFile != null) {
             ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, relevanceIdfFile, false, "relevance");
@@ -52,12 +52,12 @@ public class PreComputeFeatures extends ProblemBuilder {
         if (sentimentIdfFile != null) {
             ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, sentimentIdfFile, false, "sentiment");
         }
-        if (aspectCoarseIdfFile != null) {
-            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectCoarseIdfFile, true, "aspect");
-        }
-        if (aspectIdfFile != null) {
-            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectIdfFile, false, "aspect");
-        }
+//        if (aspectCoarseIdfFile != null) {
+//            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectCoarseIdfFile, true, "aspect");
+//        }
+//        if (aspectIdfFile != null) {
+//            ComputeIdfTermsCategory.computeIdfScores(configurationFile, trainFile, aspectIdfFile, false, "aspect");
+//        }
     }
 
 }

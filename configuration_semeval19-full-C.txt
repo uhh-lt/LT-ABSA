@@ -1,0 +1,47 @@
+## configuration for sentiment task on SemEval 2016 data
+
+# training and test files
+format		germeval					# either germeval or semeval16
+trainFile	data/semeval2019-6/offenseval-training-v1-C.tsv
+#testFile	data/semeval2019-6/agr_en_dev_A.tsv
+predictionFile	data/semeval2019-6/testset-taskc-nohead_pred.tsv
+
+testFile	data/semeval2019-6/test_set_taskc-nohead.tsv
+
+language	en
+
+# the domain corpus is required for feature induction
+corpus					data/semeval2019-6/corpus/corpus_full_big.tsv.gz
+
+
+# models
+relevanceModel		data/semeval2019-6/models/relevance_model_C
+#sentimentModel		data/semeval2019-6/models/sentiment_model_B
+#aspectModel			data/semeval2019-6/models/aspect_model
+#aspectCoarseModel	data/semeval2019-6/models/aspect_coarse_model
+crfModelFolder		data/semeval2019-6/models/
+
+
+# features
+
+positiveGazeteerFile	data/semeval2019-6/dictionaries/positive
+negativeGazeteerFile	data/semeval2019-6/dictionaries/negative
+aggregateGazeteerFile	data/semeval2019-6/dictionaries/insults.txt
+#polarityLexiconFile		data/semeval2019-6/features_lapt/polarityLexicon.tsv.gz
+w2vFile					data/semeval2019-6/wordEmbedding/english_300_full.bin.gz
+
+#weightedIdfFile			data/semeval2019-6/features_lapt/idfmap.tsv.gz
+#weightedW2vFile			data/semeval2019-6/wordEmbedding/english_300_full.bin.gz
+
+# induced features
+idfFile					data/semeval2019-6/features/idfmap.tsv.gz				# IDF file, min freq = 100 by default
+minTermFrequency		50
+maxLengthFile			data/semeval2019-6/features/max_length					# limit: 500 words
+relIdfTerms				data/semeval2019-6/features/rel_idf_terms_C.tsv
+#sentIdfTerms			data/semeval2019-6/features/sentiment_idf_terms_B.tsv
+#aspectIdfTerms			data/semeval2019-6/features/aspect_idf_terms.tsv
+#aspectCoarseIdfTerms	data/semeval2019-6/features/aspect_coarse_idf_terms.tsv
+
+
+/DTConfigurationFile	conf_web_wikipedia_trigram.xml
+/missingWordsFile		data/en/expansion/missingWords.txt

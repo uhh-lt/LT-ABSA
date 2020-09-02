@@ -83,8 +83,10 @@ public class AbSentiment extends ProblemBuilder {
         Result res = new Result(text);
 
         // extract aspect terms
-        JCas aspectCas = aspectTargetClassifier.processCas(cas);
-        extractAspectExpressions(aspectCas, res);
+        if (aspectTargetClassifier != null) {
+    //        JCas aspectCas = aspectTargetClassifier.processCas(cas);
+      //      extractAspectExpressions(aspectCas, res);
+        }
 
         if (relevanceClassifier != null) {
             res.setRelevance(relevanceClassifier.getLabel(cas));

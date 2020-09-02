@@ -99,7 +99,7 @@ public class Preprocessor extends ProblemBuilder {
         try {
             tokenizer.process(cas);
             if (!lightAnalysis) {
-                postagger.process(cas);
+                //postagger.process(cas);
             }
         } catch (AnalysisEngineProcessException e) {
             e.printStackTrace();

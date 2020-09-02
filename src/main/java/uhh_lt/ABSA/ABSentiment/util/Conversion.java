@@ -42,6 +42,7 @@ import java.util.*;
  */
 public class Conversion {
 
+    // file reader and fields
     private static BufferedReader reader;
     private static int idField = 3;
     private static int relField = 4;
@@ -49,6 +50,18 @@ public class Conversion {
     private static int subcatField = 7;
     private static int polField = 6;
     private static int relationField = 9;
+
+    // current document
+    static String document = "";
+
+
+    // output files
+    static Writer tsvOut = null;
+
+    static Writer sentimentOut = null;
+    static Writer relevanceOut = null;
+    static Writer aspectOut = null;
+
 
     private static boolean lemmatize = false;
 
@@ -65,7 +78,6 @@ public class Conversion {
     private static int lastPos = -1;
 
 
-    static Writer tsvOut = null;
 
     private static Set<String> exclude = new HashSet<>();
     private static Set<String> irrelevant = new HashSet<>();
@@ -80,8 +92,6 @@ public class Conversion {
     private static List<Target> targets = new ArrayList<>();
     private static List<Target> sentimentWords = new ArrayList<>();
 
-    static String document = "";
-
     private static Map<String, String> documentMap = new HashMap<>();
     private static Map<String, String> idMap = new HashMap<>();
     private static Map<Integer, Integer> relations = new HashMap<>();
@@ -90,16 +100,7 @@ public class Conversion {
 
         // open input file
         String filename = args[0];
-        try {
-            reader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(filename), "UTF-8"));
-        } catch (FileNotFoundException e1) {
-            System.err.println("File could not be opened: " + filename);
-            e1.printStackTrace();
-            System.exit(1);
-        } catch (UnsupportedEncodingException e1) {
-            e1.printStackTrace();
-        }
+        openInputFile(filename);
 
         // open output file
         Writer targetOut = null;
@@ -204,38 +205,10 @@ public class Conversion {
 
         //mainTarget(args);
 
-        // open input file
+        // initialize reader and open output files
         String filename = args[0];
-        try {
-            reader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(filename), "UTF-8"));
-        } catch (FileNotFoundException e1) {
-            System.err.println("File could not be opened: " + filename);
-            e1.printStackTrace();
-            System.exit(1);
-        } catch (UnsupportedEncodingException e1) {
-            e1.printStackTrace();
-        }
-
-        // open output files
-        Writer sentimentOut = null;
-        Writer relevanceOut = null;
-        Writer aspectOut = null;
-        try {
-            sentimentOut = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("sentiment_" + filename), "UTF-8"));
-
-            relevanceOut = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("relevance_" + filename), "UTF-8"));
-
-            aspectOut = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("aspect_" + filename), "UTF-8"));
-            tsvOut = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(filename.replace(".", "-tsv.")), "UTF-8"));
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-            System.exit(1);
-        }
+        openInputFile(filename);
+        openOutputFiles(filename);
 
         String line;
         String id = null;
@@ -517,6 +490,45 @@ public class Conversion {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Creates writers for output. Creates output files based on the input file name
+     * @param filepath path to the input TSV file
+     */
+    private static void openOutputFiles(String filepath) {
+        try {
+            sentimentOut = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("sentiment_" + filepath), "UTF-8"));
+
+            relevanceOut = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("relevance_" + filepath), "UTF-8"));
+
+            aspectOut = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("aspect_" + filepath), "UTF-8"));
+            tsvOut = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(filepath.replace(".", "-tsv.")), "UTF-8"));
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            System.exit(1);
+        }
+    }
+
+    /**
+     * Creates Reader from specified file path
+     * @param filepath path to the input TSV file
+     */
+    private static void openInputFile(String filepath) {
+        try {
+            reader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(filepath), "UTF-8"));
+        } catch (FileNotFoundException e1) {
+            System.err.println("File could not be opened: " + filepath);
+            e1.printStackTrace();
+            System.exit(1);
+        } catch (UnsupportedEncodingException e1) {
+            e1.printStackTrace();
         }
     }
 

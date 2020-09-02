@@ -270,7 +270,24 @@ public class Classify extends ProblemBuilder{
         } else {
             try {
                 out.write(d.getDocumentId() + "\t" + d.getDocumentText() + "\t");
-                out.write(res.getRelevance() + "\t" + res.getSentiment() + "\t" + res.getAspect() + ":" + res.getSentiment()+ "\n");
+
+                //out.write(res.getRelevance() + "\t" + res.getSentiment() + "\t" + res.getAspect() + ":" + res.getSentiment()+ "\n");
+
+                //out.write( d.getDocumentText() + "\t");
+                // majority class for offense germeval 2018
+                if (res.getRelevance().equals("OFFENSE") && res.getSentiment().equals("OTHER")){
+
+                    out.write(res.getRelevance() + "\t" + "ABUSE" +  "\n");
+                }
+                //Semeval 2019 targeted/untargeted distinction
+///                else if (res.getSentiment().equals("NULL")) {
+//
+  //                  out.write(res.getRelevance() + "\t" + "UNT" +  "\n");
+     //           }
+                else {
+                    out.write(res.getRelevance() + "\t" + res.getSentiment() +  "\n");
+                }
+
                } catch (IOException e) {
                 e.printStackTrace();
             }

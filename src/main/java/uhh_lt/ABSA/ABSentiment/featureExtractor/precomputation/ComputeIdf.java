@@ -106,6 +106,8 @@ public class ComputeIdf {
     public void saveIdfScores(String idfFile) {
         try {
             Writer out;
+            File file = new File(idfFile);
+            file.getParentFile().mkdirs();
             if (idfFile.endsWith(".gz")) {
                 out = new OutputStreamWriter(new GZIPOutputStream(new FileOutputStream(idfFile)), "UTF-8");
             } else {

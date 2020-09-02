@@ -59,10 +59,7 @@ public class TsvReader implements InputReader {
                 reader = new BufferedReader(
                         new InputStreamReader(this.getClass().getResourceAsStream(filename), "UTF-8"));
             } catch (Exception e) {
-                System.err.println("Stream could not be opened: " + filename + "\nTrying filename...");
-                try {
-                    reader = new BufferedReader(
-                            new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+                leInputStream(filename), "UTF-8"));
                 } catch (FileNotFoundException e1) {
                     System.err.println("File could not be opened: " + filename);
                     try {

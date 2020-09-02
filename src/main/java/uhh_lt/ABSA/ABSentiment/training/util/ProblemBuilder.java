@@ -581,6 +581,8 @@ public class ProblemBuilder {
                     String predictedLabel = labelLookup.get(prediction.intValue());
                     if (type.compareTo("relevance") == 0) {
                         goldLabel = sentence.getRelevance()[0];
+                        System.out.println(goldLabel);
+                        System.out.println(predictedLabel);
                         confusionMatrix.updateMatrix(predictedLabel, goldLabel);
                     } else if (type.compareTo("sentiment") == 0) {
                         try {
