@@ -22,7 +22,7 @@
         <nd4j.backend>nd4j-${nd4j.type}</nd4j.backend>
         <nd4j.version>0.8.1-SNAPSHOT</nd4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.9</java.version>
+        <java.version>1.8</java.version>
         <dkpro.core.version>1.6.2</dkpro.core.version>
         <cleartk.version>2.0.0</cleartk.version>
     </properties>
