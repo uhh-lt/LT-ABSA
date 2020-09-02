@@ -8,6 +8,14 @@
 This software package performs aspect-based sentiment analysis. It can analyze documents and identify aspect targets, their aspect category and their relevance. For usage in live systems, it features a relevance classifier to filter irrelevant documents.
 JavaDoc documentation is available on the [documentation page](https://tudarmstadt-lt.github.io/AB-Sentiment/doc/).
 
+
+## How to cite
+
+The system description can be obtained from the [original paper](https://www.inf.uni-hamburg.de/en/inst/ab/lt/publications/2017-ruppertetal-germeval2017-lt-absa.pdf). To cite it, use the following reference:
+
+
+Ruppert E., Kumar A., Biemann C. (2017): LT-ABSA: An extensible open-source system for document-level and aspect-based sentiment analysis. In: Proceedings of the GSCL GermEval Shared Task on Aspect-based Sentiment in Social Media Customer Feedback, pages 55–60, Berlin, Germany
+
 ## Quickstart
 
 * create a new project
